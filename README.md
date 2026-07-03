@@ -1,105 +1,280 @@
-# DataProof
+████████╗██████╗ ██╗   ██╗███████╗████████╗
+╚══██╔══╝██╔══██╗██║   ██║██╔════╝╚══██╔══╝
+   ██║   ██║  ██║██║   ██║█████╗     ██║
+   ██║   ██║  ██║██║   ██║██╔══╝     ██║
+   ██║   ██████╔╝╚██████╔╝███████╗   ██║
+   ╚═╝   ╚═════╝  ╚═════╝ ╚══════╝   ╚═╝
 
-Scientific data analysis and interpretation platform that transforms tabular lab data into trustworthy, LLM-narrated reports.
+  ██████╗ ██████╗  ██████╗ ██████╗ ███████╗
+  ██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██╔════╝
+  ██║  ██║██████╔╝██║   ██║██████╔╝█████╗
+  ██║  ██║██╔══██╗██║   ██║██╔══██╗██╔══╝
+  ██████╔╝██║  ██║╚██████╔╝██║  ██║███████╗
+  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
 
-## Quick Start
+═══════════════════════════════════════════════════════════
+  TRUSTWORTHY SCIENTIFIC DATA ANALYSIS & REPORT PLATFORM
+═══════════════════════════════════════════════════════════
 
-```bash
-docker compose up
-```
+  Turn raw tabular lab data into rigorous, LLM-narrated
+  scientific reports — without ever letting AI touch your math.
 
-Then visit:
-- **Web UI**: http://localhost:5173
-- **API**: http://localhost:8000
-- **API Docs**: http://localhost:8000/docs
-- **MinIO Console**: http://localhost:9001
+═══════════════════════════════════════════════════════════
 
-## Development
+  Author:  Mohamad Kamardin
+  Email:   focusinzanzibar@outlook.com
+  Status:  Phase 6/6 — Production-ready
+  Stack:   Python 3.12 · FastAPI · Lit 3 · PostgreSQL · Redis
+  License: Proprietary — All Rights Reserved
 
-### Prerequisites
+═══════════════════════════════════════════════════════════
 
-- Docker and Docker Compose
-- Git
 
-### Running Locally
+# WHAT IS DATAPROOF
 
-1. Clone the repository:
-   ```bash
-   git clone <repo-url>
-   cd dataproof
-   ```
+DataProof is a scientific data analysis platform built for
+researchers, labs, and field scientists. Upload CSV/XLSX
+data from any instrument, map columns to semantic roles,
+run deterministic analysis packs, and export a professional
+PDF/DOCX report with charts, narratives, and citations.
 
-2. Start all services:
-   ```bash
-   docker compose up
-   ```
+The core guarantee: **Python computes all numbers. The LLM
+only writes the story.** No AI hallucination can corrupt
+your results — because the AI never touches raw data.
 
-3. The web app will show a live "API: healthy" indicator sourced from the backend.
 
-### Backend Development
+# THE TRUST GUARANTEE
 
-```bash
-cd apps/api
-uv sync
-uv run uvicorn api.main:app --reload
-```
+┌─────────────────────────────────────────────────────────┐
+│                                                         │
+│  1. PYTHON computes all derived values                  │
+│     — deterministic, auditable, reproducible            │
+│                                                         │
+│  2. Analysis packs are pure functions                   │
+│     — same input → same output, every time              │
+│                                                         │
+│  3. LLM receives ONLY pre-computed results              │
+│     — never raw numbers, never file paths               │
+│                                                         │
+│  4. Citation validation rejects unsupported claims      │
+│     — every narrative line must cite a computed value   │
+│                                                         │
+│  → Incorrect reports are structurally impossible.       │
+│                                                         │
+└─────────────────────────────────────────────────────────┘
 
-Run tests:
-```bash
-uv run pytest
-```
 
-Lint:
-```bash
-uv run ruff check .
-```
+# QUICK START
 
-### Frontend Development
+  Requires: PostgreSQL 16+, Redis 7+ (running natively)
 
-```bash
-cd apps/web
-npm install
-npm run dev
-```
+  ┌────────────────────────────────────────────────────┐
+  │  git clone git@github.com:MohamadKamardin1/        │
+  │             DataProof.git                          │
+  │  cd dataproof                                      │
+  │  ./dev.sh                                          │
+  └────────────────────────────────────────────────────┘
 
-Build:
-```bash
-npm run build
-```
+  ┌──────────────────────────────────┬──────────────────┐
+  │ Service                          │ URL              │
+  ├──────────────────────────────────┼──────────────────┤
+  │ Web UI                           │ localhost:5173   │
+  │ API                              │ localhost:8000   │
+  │ API Docs (Swagger)               │ localhost:8000/  │
+  │                                  │ docs             │
+  └──────────────────────────────────┴──────────────────┘
 
-Lint:
-```bash
-npm run lint
-```
+  Then create an account at the login screen, upload a
+  CSV/XLSX dataset, select an analysis pack, and generate
+  your report.
 
-## Documentation
 
-The `/docs` directory contains comprehensive documentation:
+# DATA PIPELINE
 
-- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)** — System design, data flow, and the trust guarantee
-- **[CONVENTIONS.md](docs/CONVENTIONS.md)** — Coding standards, project structure, Git workflow
-- **[API_CONTRACTS.md](docs/API_CONTRACTS.md)** — HTTP API endpoint specifications
-- **[DECISIONS.md](docs/DECISIONS.md)** — Architectural decision records (ADRs)
-- **[ROADMAP.md](docs/ROADMAP.md)** — Project phases and acceptance criteria (source of truth for status)
-- **[PROGRESS.md](docs/PROGRESS.md)** — Session-by-session development log
-- **[GLOSSARY.md](docs/GLOSSARY.md)** — Domain terminology
+  UPLOAD ──▶ PARSE ──▶ SNIFF ──▶ MAPPING ──▶ ANALYZE
+                                              │
+                                              ▼
+  EXPORT ◀── REPORT ◀── CHARTS ◀── INTERPRET ◀─┘
+   PDF/              Plotly         DeepSeek
+   DOCX                              LLM
 
-**Read these before contributing.** Future sessions depend on this documentation.
+  Every step is isolated. The LLM never sees raw data.
+  Charts are deterministic. Citations are validated.
 
-## Project Status
 
-See **[ROADMAP.md](docs/ROADMAP.md)** for current phase and acceptance criteria.
+# FEATURES
 
-**Current Phase**: Phase 6 (Auth, Billing & Deployment) — Complete
+  ┌──────────────────────────────────────────────────────┐
+  │  PARSING          │  Auto-detect columns from CSV/   │
+  │                   │  XLSX lab files; sniff timestamps │
+  │                   │  values, units, sample IDs        │
+  ├───────────────────┼──────────────────────────────────┤
+  │  ANALYSIS PACKS   │  Pluggable YAML-defined packs —  │
+  │                   │  paleoclimate XRF, water quality, │
+  │                   │  any domain. No Python needed.    │
+  ├───────────────────┼──────────────────────────────────┤
+  │  VISUALIZATIONS   │  Auto-generated Plotly charts —  │
+  │                   │  lines, bars, scatter, ternary,  │
+  │                   │  proxy comparison grids           │
+  ├───────────────────┼──────────────────────────────────┤
+  │  AI NARRATIVES    │  DeepSeek-powered interpretation │
+  │                   │  with executive summary, key      │
+  │                   │  findings, methodology, recs      │
+  ├───────────────────┼──────────────────────────────────┤
+  │  EXPORT           │  Professional PDF (WeasyPrint)   │
+  │                   │  and DOCX (python-docx) reports   │
+  │                   │  with full citations              │
+  ├───────────────────┼──────────────────────────────────┤
+  │  AUTH & BILLING   │  JWT auth, workspace isolation,  │
+  │                   │  Stripe billing, API keys,        │
+  │                   │  plan-limit enforcement            │
+  ├───────────────────┼──────────────────────────────────┤
+  │  PERSISTENCE      │  All datasets, analyses, and      │
+  │                   │  reports saved — return any time  │
+  └───────────────────┴──────────────────────────────────┘
 
-> **Note**: All 6 phases are now complete. Next steps include frontend auth UI, rate limiting middleware, and API key auth. See [ROADMAP.md](docs/ROADMAP.md) for post-program recommendations.
 
-## Architecture
+# TECH STACK
 
-DataProof enforces a hard separation between deterministic computation (Python) and LLM narrative generation. This is the core trust guarantee: **the LLM never computes numbers, only interprets pre-computed results**.
+  ┌──────────┬───────────────────────────────────────────┐
+  │ CATEGORY │ TECHNOLOGY                                │
+  ├──────────┼───────────────────────────────────────────┤
+  │ Backend  │ Python 3.12, FastAPI, SQLAlchemy 2.0,     │
+  │          │ Alembic, Celery, Pydantic v2              │
+  ├──────────┼───────────────────────────────────────────┤
+  │ Frontend │ Lit 3, TypeScript 5, Vite 5, Shoelace,    │
+  │          │ Plotly.js                                 │
+  ├──────────┼───────────────────────────────────────────┤
+  │ Database │ PostgreSQL 16, Redis 7                    │
+  ├──────────┼───────────────────────────────────────────┤
+  │ Storage  │ MinIO (S3-compatible) / local filesystem  │
+  │          │ fallback                                  │
+  ├──────────┼───────────────────────────────────────────┤
+  │ AI       │ DeepSeek Chat API (report narratives)     │
+  ├──────────┼───────────────────────────────────────────┤
+  │ Auth     │ JWT (access + refresh), Argon2 hashing,   │
+  │          │ API keys (bcrypt-style)                    │
+  ├──────────┼───────────────────────────────────────────┤
+  │ Billing  │ Stripe Checkout, webhooks, usage metering │
+  ├──────────┼───────────────────────────────────────────┤
+  │ Design   │ Brutalist UI, vintage palette, Shoelace   │
+  │          │ theming, Google Fonts (Playfair Display,  │
+  │          │ Space Grotesk, JetBrains Mono)             │
+  └──────────┴───────────────────────────────────────────┘
 
-See [ARCHITECTURE.md](docs/ARCHITECTURE.md) for the full system design.
 
-## License
+# PROJECT STRUCTURE
 
-Proprietary. All rights reserved.
+  dataproof/
+  ├── apps/
+  │   ├── api/              # FastAPI backend
+  │   │   ├── src/api/
+  │   │   │   ├── routes/   # Endpoint modules
+  │   │   │   ├── models/   # SQLAlchemy ORM models
+  │   │   │   ├── templates/# HTML templates (reports)
+  │   │   │   ├── packs/    # Analysis pack YAML files
+  │   │   │   ├── deepseek.py
+  │   │   │   ├── charting.py
+  │   │   │   ├── reports.py
+  │   │   │   └── s3.py
+  │   │   └── alembic/      # Database migrations
+  │   └── web/              # Lit + Vite frontend
+  │       └── src/
+  │           ├── components/  # Lit web components
+  │           └── styles/      # Global CSS
+  ├── docs/                  # Architecture, roadmap, ADRs
+  ├── dev.sh                 # Single-command dev launcher
+  └── README.md              # ← you are here
+
+
+# DOCUMENTATION
+
+  All docs live in /docs and are the source of truth:
+
+  ┌──────────────────────────┬────────────────────────────┐
+  │ File                     │ What it contains           │
+  ├──────────────────────────┼────────────────────────────┤
+  │ ARCHITECTURE.md          │ System design, data flow,  │
+  │                          │ trust guarantee             │
+  │ CONVENTIONS.md           │ Coding standards, Git       │
+  │                          │ workflow                    │
+  │ API_CONTRACTS.md         │ HTTP endpoint specs         │
+  │ DECISIONS.md             │ ADRs (architectural         │
+  │                          │ decisions)                  │
+  │ ROADMAP.md               │ Phases, milestones,         │
+  │                          │ acceptance criteria         │
+  │ PROGRESS.md              │ Development session log     │
+  │ GLOSSARY.md              │ Domain terminology          │
+  └──────────────────────────┴────────────────────────────┘
+
+
+# DEVELOPMENT
+
+  ┌──────────────────────┬──────────────────────────────┐
+  │ Backend              │  cd apps/api                 │
+  │                      │  .venv/bin/python -m          │
+  │                      │  uvicorn api.main:app         │
+  │                      │  --reload                     │
+  ├──────────────────────┼──────────────────────────────┤
+  │ Frontend             │  cd apps/web                 │
+  │                      │  npm install                  │
+  │                      │  npm run dev                  │
+  ├──────────────────────┼──────────────────────────────┤
+  │ Tests                │  cd apps/api                 │
+  │                      │  .venv/bin/python -m pytest   │
+  ├──────────────────────┼──────────────────────────────┤
+  │ Lint                 │  cd apps/api                 │
+  │                      │  .venv/bin/python -m ruff     │
+  │                      │  check .                      │
+  │                      │                              │
+  │                      │  cd apps/web                 │
+  │                      │  npm run lint                 │
+  └──────────────────────┴──────────────────────────────┘
+
+  Or just run ./dev.sh from the root — it handles everything
+  (kills stale ports, starts API + Vite, waits for health).
+
+
+# STATUS
+
+  Phase 1-6: ✅ COMPLETE (all acceptance criteria met)
+
+  ┌──────┬──────────────────────────────────────┬────────┐
+  │ PHASE│ GOAL                                 │ STATUS │
+  ├──────┼──────────────────────────────────────┼────────┤
+  │  1   │ Infrastructure & Scaffolding          │   ✅   │
+  │  2   │ Data Ingestion (parse, sniff, map)    │   ✅   │
+  │  3   │ Analysis Engine (deterministic math)  │   ✅   │
+  │  4   │ LLM Interpretation (DeepSeek)         │   ✅   │
+  │  5   │ Visualization & Reporting             │   ✅   │
+  │  6   │ Auth, Billing & Deployment            │   ✅   │
+  └──────┴──────────────────────────────────────┴────────┘
+
+
+# POST-PROGRAM ROADMAP
+
+  - OAuth2 (Google, GitHub) login
+  - Kubernetes deployment
+  - WebSocket real-time progress
+  - More analysis pack domains
+  - Rate-limiting middleware (per-plan)
+  - API key auth as Bearer alternative
+
+
+# BRAND
+
+  Colors:    Rust #9B4F2E · Burnt Orange #D9733B
+             Warm Sand #F5E6D3 · Deep Charcoal #1A1A1A
+  Fonts:     Playfair Display (headings)
+             Space Grotesk (body)
+             JetBrains Mono (code)
+  Vibe:      Brutalist · Scientific · Uncompromising
+
+
+═══════════════════════════════════════════════════════════
+  DataProof
+  Built by Mohamad Kamardin · focusinzanzibar@outlook.com
+  https://github.com/MohamadKamardin1/DataProof
+
+  © 2026 Mohamad Kamardin. All rights reserved.
+═══════════════════════════════════════════════════════════
