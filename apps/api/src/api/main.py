@@ -49,6 +49,9 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://localhost:4173",
+        "https://data.mohamadkamardin.space",
+        "https://dataproofserver.mohamadkamardin.space",
+        "https://dataproofserver.mohamadkamardin.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],

@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/health",
+      "destination": "https://dataproofserver.mohamadkamardin.space/health"
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://dataproofserver.mohamadkamardin.space/api/:path*"
+    }
+  ]
+}
