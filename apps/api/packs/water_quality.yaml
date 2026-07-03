@@ -1,0 +1,44 @@
+id: water_quality
+name: Water Quality
+description: >
+  Computes common water quality indices: pH stability, turbidity ratio,
+  and dissolved oxygen saturation proxy.
+
+required_columns:
+  - pH
+  - Turbidity
+  - DO
+
+proxies:
+  - id: ph_stability_index
+    label: pH Stability Index
+    formula: pH / 7.0
+    unit: ratio
+    description: Proximity to neutral pH — values near 1.0 indicate neutral water
+
+  - id: turbidity_ratio
+    label: Turbidity Ratio
+    formula: Turbidity / 10.0
+    unit: ratio
+    description: Normalised turbidity relative to a 10 NTU baseline
+
+  - id: do_saturation_proxy
+    label: DO Saturation Proxy
+    formula: DO / 8.0
+    unit: ratio
+    description: Dissolved oxygen relative to saturation baseline at 25°C
+
+interpretation_prompt: >
+  Analyze the pH Stability Index, Turbidity Ratio, and DO Saturation Proxy
+  from this water quality dataset. Discuss what each index suggests about
+  water quality conditions.
+
+chart_recommendations:
+  - type: line
+    title: pH Stability by Sample
+    x_axis: sample_id
+    y_axis: ph_stability_index
+  - type: scatter
+    title: Turbidity vs DO Saturation
+    x_axis: turbidity_ratio
+    y_axis: do_saturation_proxy

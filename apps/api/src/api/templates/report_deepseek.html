@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @page {
+      size: A4;
+      margin: 1.5cm;
+
+      @bottom-center {
+        content: "DataProof Scientific Report — Page " counter(page) " of " counter(pages);
+        font-size: 8pt;
+        color: #999;
+        font-family: "Space Grotesk", sans-serif;
+      }
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: "Space Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 10pt;
+      line-height: 1.5;
+      color: #1a1a1a;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* ── Watermark ── */
+    .watermark-bg {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      font-size: 48pt;
+      font-weight: 900;
+      color: rgba(0, 0, 0, 0.03);
+      pointer-events: none;
+      z-index: -1;
+      white-space: nowrap;
+      font-family: "Playfair Display", Georgia, serif;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Header Band ── */
+    .header-band {
+      background: #1a1a1a;
+      color: #fff;
+      padding: 1.2cm 1cm;
+      margin: -1.5cm -1.5cm 0.8cm;
+      border-bottom: 6px solid #c97d4a;
+    }
+
+    .header-band h1 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 22pt;
+      margin: 0 0 0.3cm;
+      letter-spacing: -0.01em;
+    }
+
+    .header-band .subtitle {
+      font-size: 10pt;
+      color: #c97d4a;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .header-band .meta {
+      font-size: 8pt;
+      color: #aaa;
+      margin-top: 0.4cm;
+    }
+
+    /* ── Section Titles ── */
+    h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 14pt;
+      margin: 0.6cm 0 0.3cm;
+      padding-bottom: 0.2cm;
+      border-bottom: 3px solid #1a1a1a;
+    }
+
+    h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 11pt;
+      margin: 0.4cm 0 0.2cm;
+    }
+
+    /* ── Executive Summary Box ── */
+    .exec-summary {
+      background: #fdf2ef;
+      border: 3px solid #1a1a1a;
+      padding: 0.6cm;
+      margin: 0.5cm 0;
+      box-shadow: 4px 4px 0 0 #1a1a1a;
+    }
+
+    .exec-summary p {
+      margin: 0;
+      font-style: italic;
+      color: #333;
+    }
+
+    /* ── Key Findings ── */
+    .findings-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4cm;
+      margin: 0.4cm 0;
+    }
+
+    .finding-card {
+      flex: 1 1 45%;
+      background: #f5f5f5;
+      border: 2px solid #1a1a1a;
+      padding: 0.4cm;
+      box-shadow: 3px 3px 0 0 #1a1a1a;
+    }
+
+    .finding-card .num {
+      display: inline-block;
+      background: #c97d4a;
+      color: #fff;
+      width: 22px;
+      height: 22px;
+      line-height: 22px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 9pt;
+      margin-right: 0.3cm;
+      vertical-align: middle;
+    }
+
+    .finding-card p {
+      margin: 0.2cm 0 0;
+      font-size: 9pt;
+    }
+
+    /* ── Results Table ── */
+    table.results {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.4cm 0;
+      font-size: 8.5pt;
+    }
+
+    table.results th,
+    table.results td {
+      border: 1px solid #ccc;
+      padding: 4px 6px;
+      text-align: center;
+    }
+
+    table.results th {
+      background: #1a1a1a;
+      color: #fff;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 7.5pt;
+      letter-spacing: 0.04em;
+    }
+
+    table.results tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+
+    /* ── Proxy Description ── */
+    .proxy-box {
+      background: #faf6f0;
+      border-left: 4px solid #c97d4a;
+      padding: 0.3cm 0.5cm;
+      margin: 0.3cm 0;
+      font-size: 9pt;
+    }
+
+    .proxy-box strong {
+      color: #c97d4a;
+    }
+
+    /* ── Recommendations ── */
+    .recommendation {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.3cm;
+      margin: 0.3cm 0;
+      padding: 0.3cm;
+      background: #eef7f0;
+      border: 2px solid #2d6a4f;
+    }
+
+    .recommendation .icon {
+      font-size: 14pt;
+      line-height: 1;
+    }
+
+    .recommendation p {
+      margin: 0;
+      font-size: 9pt;
+    }
+
+    /* ── Confidence Badge ── */
+    .confidence-badge {
+      display: inline-block;
+      background: #1a1a1a;
+      color: #fff;
+      padding: 0.2cm 0.5cm;
+      font-size: 8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 0.3cm 0;
+    }
+
+    /* ── Footer Watermark ── */
+    .footer-watermark {
+      margin-top: 1cm;
+      padding-top: 0.5cm;
+      border-top: 2px solid #1a1a1a;
+      text-align: center;
+    }
+
+    .footer-watermark .brand {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 11pt;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 0 0 0.2cm;
+    }
+
+    .footer-watermark .creator {
+      font-size: 9pt;
+      color: #c97d4a;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .footer-watermark .disclaimer {
+      font-size: 7.5pt;
+      color: #999;
+      margin-top: 0.3cm;
+      font-style: italic;
+    }
+
+    /* ── Page Break ── */
+    .page-break {
+      page-break-before: always;
+    }
+
+    /* ── Two Column Layout for Page 2 ── */
+    .two-col {
+      display: flex;
+      gap: 0.6cm;
+    }
+
+    .two-col > div {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="watermark-bg">DataProof</div>
+
+<!-- ═══════ PAGE 1 ═══════ -->
+<div class="header-band">
+  <h1>{{ pack_name }}</h1>
+  <p class="subtitle">Scientific Analysis Report</p>
+  <p class="meta">Generated by DataProof Engine | {{ generation_date }}</p>
+</div>
+
+<!-- Executive Summary -->
+<h2>Executive Summary</h2>
+<div class="exec-summary">
+  <p>{{ executive_summary }}</p>
+</div>
+
+<!-- Key Findings -->
+<h2>Key Findings</h2>
+<div class="findings-grid">
+  {% for finding in key_findings %}
+  <div class="finding-card">
+    <span class="num">{{ loop.index }}</span>
+    <p>{{ finding }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Methodology -->
+<h2>Methodology</h2>
+<p>{{ pack_description }}</p>
+
+<h3>Proxies Applied</h3>
+{% for p in proxies %}
+<div class="proxy-box">
+  <strong>{{ p.label }}</strong> ({{ p.formula }}): {{ p.description or "See pack documentation." }}
+</div>
+{% endfor %}
+
+<!-- Results Overview -->
+<h2>Results Overview</h2>
+<table class="results">
+  <thead>
+    <tr>
+      <th>Sample</th>
+      {% for pl in proxy_labels %}
+        <th>{{ pl }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in table_rows[:15] %}
+    <tr>
+      <td><strong>{{ row.sample_id }}</strong></td>
+      {% for pid in proxy_ids %}
+        {% set val = row[pid] %}
+        <td>{% if val is not none %}{{ "%.4f"|format(val) }}{% else %}N/A{% endif %}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- ═══════ PAGE 2 ═══════ -->
+<div class="page-break"></div>
+
+<div class="header-band">
+  <h1>{{ pack_name }}</h1>
+  <p class="subtitle">Detailed Analysis & Recommendations</p>
+  <p class="meta">Generated by DataProof Engine | {{ generation_date }}</p>
+</div>
+
+<!-- Recommendations -->
+<h2>Recommendations</h2>
+{% for rec in recommendations %}
+<div class="recommendation">
+  <span class="icon">▸</span>
+  <p>{{ rec }}</p>
+</div>
+{% endfor %}
+
+<!-- Confidence Assessment -->
+<h2>Confidence Assessment</h2>
+<div class="confidence-badge">{{ confidence_assessment }}</div>
+
+<!-- Per-Sample Interpretation -->
+{% if per_sample_interpretation %}
+<h2>Per-Sample Analysis</h2>
+<table class="results">
+  <thead>
+    <tr>
+      <th>Sample</th>
+      <th>Classification</th>
+      <th>Rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for ps in per_sample_interpretation[:10] %}
+    <tr>
+      <td><strong>{{ ps.sample_id }}</strong></td>
+      <td>{{ ps.classification }}</td>
+      <td>{{ ps.rationale }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %}
+
+<!-- References -->
+{% if citations %}
+<h2>References</h2>
+<ol>
+  {% for c in citations %}
+  <li>
+    {{ c.authors }} ({{ c.year or "n.d." }}). <em>{{ c.title }}</em>. {{ c.venue or "" }}.
+    {% if c.doi_or_url %}{{ c.doi_or_url }}{% endif %}
+    {% if c.verified %}[VERIFIED]{% else %}[UNVERIFIED]{% endif %}
+  </li>
+  {% endfor %}
+</ol>
+{% endif %}
+
+<!-- Footer Watermark -->
+<div class="footer-watermark">
+  <p class="brand">DataProof Scientific Intelligence</p>
+  <p class="creator">Created by Mohamad Kamardin with DataProof Engine</p>
+  <p class="disclaimer">AI-assisted interpretation — verify all content before publication.</p>
+</div>
+
+</body>
+</html>

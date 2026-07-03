@@ -1,0 +1,295 @@
+/* ── Shoelace Theme Overrides ───────────────────────────── */
+:root,
+:host,
+.sl-theme-light {
+  --sl-color-primary-50: #fdf2ef;
+  --sl-color-primary-100: #fadcd3;
+  --sl-color-primary-200: #f5b9a6;
+  --sl-color-primary-300: #ef9678;
+  --sl-color-primary-400: #e9734b;
+  --sl-color-primary-500: #b7410e;
+  --sl-color-primary-600: #93350b;
+  --sl-color-primary-700: #6e2808;
+  --sl-color-primary-800: #4a1b05;
+  --sl-color-primary-900: #250d03;
+  --sl-color-primary-950: #140602;
+
+  --sl-color-neutral-50: #faf6f0;
+  --sl-color-neutral-100: #f0e8dc;
+  --sl-color-neutral-200: #ddd0c0;
+  --sl-color-neutral-300: #c5b4a0;
+  --sl-color-neutral-400: #a6937e;
+  --sl-color-neutral-500: #876f58;
+  --sl-color-neutral-600: #6c5845;
+  --sl-color-neutral-700: #524232;
+  --sl-color-neutral-800: #382c21;
+  --sl-color-neutral-900: #1e1610;
+  --sl-color-neutral-950: #0f0b08;
+
+  --sl-color-success-50: #eef7f0;
+  --sl-color-success-500: #2d6a4f;
+  --sl-color-warning-50: #fff8e7;
+  --sl-color-warning-500: #c9a84c;
+  --sl-color-danger-50: #fceeec;
+  --sl-color-danger-500: #b4413a;
+
+  --sl-font-sans: 'Space Grotesk', system-ui, sans-serif;
+  --sl-font-serif: 'Playfair Display', Georgia, serif;
+  --sl-font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  --sl-border-radius-medium: 0;
+  --sl-border-radius-large: 0;
+  --sl-border-radius-x-large: 0;
+  --sl-border-radius-circle: 50%;
+
+  --sl-shadow-x-small: 2px 2px 0 0 rgba(0, 0, 0, 0.08);
+  --sl-shadow-small: 3px 3px 0 0 rgba(0, 0, 0, 0.1);
+  --sl-shadow-medium: 4px 4px 0 0 rgba(0, 0, 0, 0.12);
+  --sl-shadow-large: 6px 6px 0 0 rgba(0, 0, 0, 0.14);
+  --sl-shadow-x-large: 8px 8px 0 0 rgba(0, 0, 0, 0.16);
+
+  --sl-input-border-color: #2c1810;
+  --sl-input-border-width: 2px;
+  --sl-input-border-radius-medium: 0;
+  --sl-input-border-radius-large: 0;
+  --sl-input-focus-ring-offset: 2px;
+
+  --sl-panel-border-width: 3px;
+  --sl-panel-border-color: #2c1810;
+
+  --sl-overlay-background-color: rgba(44, 24, 16, 0.4);
+}
+
+/* ── Dark Theme ─────────────────────────────────────────── */
+.sl-theme-dark {
+  --sl-color-primary-50: #140602;
+  --sl-color-primary-100: #250d03;
+  --sl-color-primary-200: #4a1b05;
+  --sl-color-primary-300: #6e2808;
+  --sl-color-primary-400: #93350b;
+  --sl-color-primary-500: #c97d4a;
+  --sl-color-primary-600: #d99466;
+  --sl-color-primary-700: #e6af88;
+  --sl-color-primary-800: #f0c9ab;
+  --sl-color-primary-900: #f8e3cd;
+  --sl-color-primary-950: #fdf2e8;
+
+  --sl-color-neutral-50: #0f0b08;
+  --sl-color-neutral-100: #1e1610;
+  --sl-color-neutral-200: #382c21;
+  --sl-color-neutral-300: #524232;
+  --sl-color-neutral-400: #6c5845;
+  --sl-color-neutral-500: #a6937e;
+  --sl-color-neutral-600: #c5b4a0;
+  --sl-color-neutral-700: #ddd0c0;
+  --sl-color-neutral-800: #f0e8dc;
+  --sl-color-neutral-900: #faf6f0;
+  --sl-color-neutral-950: #fdfbf8;
+
+  --sl-color-success-50: #0f1f18;
+  --sl-color-success-500: #52b788;
+  --sl-color-warning-50: #1f1808;
+  --sl-color-warning-500: #e0c56a;
+  --sl-color-danger-50: #1f0e0d;
+  --sl-color-danger-500: #e0645c;
+
+  --sl-shadow-x-small: 2px 2px 0 0 rgba(0, 0, 0, 0.3);
+  --sl-shadow-small: 3px 3px 0 0 rgba(0, 0, 0, 0.35);
+  --sl-shadow-medium: 4px 4px 0 0 rgba(0, 0, 0, 0.4);
+  --sl-shadow-large: 6px 6px 0 0 rgba(0, 0, 0, 0.45);
+  --sl-shadow-x-large: 8px 8px 0 0 rgba(0, 0, 0, 0.5);
+
+  --sl-input-border-color: #e0c9b0;
+  --sl-panel-border-color: #e0c9b0;
+}
+
+/* ── Global Styles ──────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  background: var(--sl-color-neutral-50);
+  color: var(--sl-color-neutral-900);
+  transition: background 0.3s, color 0.3s;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+
+a {
+  color: var(--sl-color-primary-500);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--sl-color-primary-400);
+}
+
+/* ── Brutalist Utilities ────────────────────────────────── */
+.brutal-card {
+  border: 3px solid var(--sl-color-neutral-900) !important;
+  box-shadow: 5px 5px 0 0 var(--sl-color-neutral-900) !important;
+  border-radius: 0 !important;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.brutal-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 7px 7px 0 0 var(--sl-color-neutral-900) !important;
+}
+
+.brutal-btn {
+  border: 3px solid var(--sl-color-neutral-900) !important;
+  box-shadow: 3px 3px 0 0 var(--sl-color-neutral-900) !important;
+  border-radius: 0 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  font-weight: 700 !important;
+  transition: transform 0.1s, box-shadow 0.1s !important;
+}
+
+.brutal-btn:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0 0 var(--sl-color-neutral-900) !important;
+}
+
+/* ── Shoelace Button Override ───────────────────────────── */
+sl-button::part(base) {
+  border-radius: 0 !important;
+  border-width: 3px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  transition: transform 0.1s, box-shadow 0.1s !important;
+}
+
+sl-button::part(base):not(:active) {
+  box-shadow: 3px 3px 0 0 var(--sl-color-neutral-900) !important;
+}
+
+sl-button:active::part(base) {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 0 var(--sl-color-neutral-900) !important;
+}
+
+sl-button[variant='primary']::part(base) {
+  border-color: var(--sl-color-primary-500) !important;
+  box-shadow: 3px 3px 0 0 var(--sl-color-primary-700) !important;
+}
+
+sl-button[variant='primary']:active::part(base) {
+  box-shadow: 1px 1px 0 0 var(--sl-color-primary-700) !important;
+}
+
+/* ── Shoelace Card Override ─────────────────────────────── */
+sl-card::part(base) {
+  border: 3px solid var(--sl-color-neutral-200);
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0 0 var(--sl-color-neutral-200);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+sl-card::part(body) {
+  padding: 1.25rem;
+}
+
+sl-card::part(header) {
+  padding: 1rem 1.25rem 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+/* ── Shoelace Input / Select Override ───────────────────── */
+sl-input::part(base),
+sl-select::part(base),
+sl-textarea::part(base) {
+  border-width: 2px !important;
+  border-radius: 0 !important;
+}
+
+sl-input:focus-within::part(base),
+sl-select:focus-within::part(base),
+sl-textarea:focus-within::part(base) {
+  box-shadow: 3px 3px 0 0 var(--sl-color-neutral-300);
+}
+
+/* ── Shoelace Badge Override ────────────────────────────── */
+sl-badge::part(base) {
+  border-radius: 0 !important;
+  font-weight: 700 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.25em 0.6em;
+}
+
+/* ── Shoelace Alert Override ────────────────────────────── */
+sl-alert::part(base) {
+  border-radius: 0 !important;
+  border-width: 3px !important;
+  box-shadow: 4px 4px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+/* ── Theme Toggle ───────────────────────────────────────── */
+.theme-toggle {
+  background: none;
+  border: 3px solid var(--sl-color-neutral-900);
+  box-shadow: 2px 2px 0 0 var(--sl-color-neutral-900);
+  cursor: pointer;
+  padding: 0.4rem 0.6rem;
+  font-size: 1.2rem;
+  line-height: 1;
+  transition: transform 0.1s, box-shadow 0.1s;
+  color: var(--sl-color-neutral-900);
+  background: var(--sl-color-neutral-50);
+}
+
+.theme-toggle:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 0;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--sl-color-neutral-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--sl-color-neutral-400);
+  border: 2px solid var(--sl-color-neutral-100);
+}
+
+/* ── Selection ──────────────────────────────────────────── */
+::selection {
+  background: var(--sl-color-primary-200);
+  color: var(--sl-color-neutral-900);
+}

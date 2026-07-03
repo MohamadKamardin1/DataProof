@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -e
+
+APPS_CHANGED=false
+PROGRESS_UPDATED=false
+
+if git diff --cached --name-only | grep -q "^apps/"; then
+  APPS_CHANGED=true
+fi
+
+if git diff --cached --name-only | grep -q "^docs/PROGRESS.md"; then
+  PROGRESS_UPDATED=true
+fi
+
+if [ "$APPS_CHANGED" = true ] && [ "$PROGRESS_UPDATED" = false ]; then
+  echo "ERROR: Changes to /apps require updating /docs/PROGRESS.md"
+  echo "Please append a dated entry to docs/PROGRESS.md describing your changes."
+  exit 1
+fi
+
+exit 0

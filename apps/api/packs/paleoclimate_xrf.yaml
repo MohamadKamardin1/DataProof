@@ -1,0 +1,50 @@
+id: paleoclimate_xrf
+name: Paleoclimate XRF
+description: >
+  Computes elemental ratios from X-ray fluorescence (XRF) data for paleoclimate
+  interpretation. Rb/Sr indicates chemical weathering intensity; Ba/Sr traces
+  paleoproductivity; Al/Si reflects clay mineral content.
+
+required_columns:
+  - Rb
+  - Sr
+  - Al
+  - Si
+
+proxies:
+  - id: rb_sr_ratio
+    label: Rb/Sr Ratio
+    formula: Rb / Sr
+    unit: ratio
+    description: Chemical weathering proxy — higher values indicate stronger weathering
+
+  - id: ba_sr_ratio
+    label: Ba/Sr Ratio
+    formula: Ba / Sr
+    unit: ratio
+    description: Paleoproductivity proxy — higher values indicate higher biological productivity
+
+  - id: al_si_ratio
+    label: Al/Si Ratio
+    formula: Al / Si
+    unit: ratio
+    description: Clay mineral proxy — higher values indicate more clay content
+
+interpretation_prompt: >
+  Analyze the Rb/Sr, Ba/Sr, and Al/Si ratios from this XRF paleoclimate dataset.
+  Discuss what each ratio suggests about weathering intensity, paleoproductivity,
+  and clay mineral content. Relate the patterns to potential climatic conditions.
+
+chart_recommendations:
+  - type: line
+    title: Rb/Sr Ratio by Sample
+    x_axis: sample_id
+    y_axis: rb_sr_ratio
+  - type: line
+    title: Al/Si Ratio by Sample
+    x_axis: sample_id
+    y_axis: al_si_ratio
+  - type: scatter
+    title: Rb/Sr vs Ba/Sr
+    x_axis: rb_sr_ratio
+    y_axis: ba_sr_ratio

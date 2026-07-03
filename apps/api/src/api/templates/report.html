@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    @page {
+      size: A4;
+      margin: 2cm;
+
+      @bottom-center {
+        content: "DataProof Report — Page " counter(page) " of " counter(pages);
+        font-size: 9pt;
+        color: #888;
+      }
+    }
+
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 11pt;
+      line-height: 1.5;
+      color: #222;
+    }
+
+    {% if user_tier == "free" %}
+    body {
+      background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255, 0, 0, 0.03) 0px,
+        rgba(255, 0, 0, 0.03) 40px,
+        rgba(255, 0, 0, 0.06) 40px,
+        rgba(255, 0, 0, 0.06) 80px
+      );
+    }
+    {% endif %}
+
+    h1 {
+      text-align: center;
+      font-size: 18pt;
+      margin-bottom: 0.3cm;
+      color: #1a1a1a;
+    }
+
+    {% if user_tier == "free" %}
+    .watermark-banner {
+      text-align: center;
+      font-size: 14pt;
+      font-weight: bold;
+      color: #d32f2f;
+      border: 2px solid #d32f2f;
+      padding: 8px 16px;
+      margin-bottom: 1cm;
+    }
+    {% endif %}
+
+    h2 {
+      font-size: 14pt;
+      margin-top: 0.8cm;
+      margin-bottom: 0.3cm;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 4px;
+    }
+
+    h3 {
+      font-size: 12pt;
+      margin-top: 0.5cm;
+      margin-bottom: 0.2cm;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 0.5cm 0;
+      font-size: 10pt;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 6px 8px;
+      text-align: center;
+    }
+
+    th {
+      background-color: #f5f5f5;
+      font-weight: bold;
+    }
+
+    .narrative {
+      background-color: #f9f9f9;
+      padding: 12px;
+      border-left: 4px solid #1976d2;
+      margin: 0.5cm 0;
+      font-style: italic;
+    }
+
+    .citation-verified {
+      color: #2e7d32;
+    }
+
+    .citation-unverified {
+      color: #c62828;
+    }
+
+    .per-sample {
+      margin-bottom: 0.3cm;
+    }
+
+    .per-sample strong {
+      display: inline-block;
+      min-width: 4cm;
+    }
+
+    .proxy-description {
+      margin-bottom: 0.3cm;
+    }
+
+    .chart-image {
+      max-width: 100%;
+      height: auto;
+      margin: 0.5cm 0;
+      page-break-inside: avoid;
+    }
+
+    .footer-note {
+      margin-top: 1cm;
+      font-size: 9pt;
+      color: #888;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+{% if user_tier == "free" %}
+<div class="watermark-banner">
+  Created by Mohamad Kamardin with DataProof Engine
+</div>
+{% endif %}
+
+<h1>DataProof Report — {{ pack_name }}</h1>
+
+{% if overview %}
+<p><em>{{ overview }}</em></p>
+{% endif %}
+
+<!-- Methodology -->
+<h2>Methodology</h2>
+<p>{{ pack_description }}</p>
+
+<h3>Proxies Used</h3>
+{% for p in proxies %}
+<div class="proxy-description">
+  <strong>{{ p.label }}</strong> ({{ p.formula }}):
+  {{ p.description or "See pack documentation." }}
+</div>
+{% endfor %}
+
+<!-- Results Table -->
+<h2>Results</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Sample</th>
+      {% for pid in proxy_ids %}
+        {% set label = pid %}
+        {% for p in proxies %}
+          {% if p.id == pid %}{% set label = p.label %}{% endif %}
+        {% endfor %}
+        <th>{{ label }}</th>
+      {% endfor %}
+    </tr>
+  </thead>
+  <tbody>
+    {% for row in table_rows %}
+    <tr>
+      <td><strong>{{ row.sample_id }}</strong></td>
+      {% for pid in proxy_ids %}
+        {% set val = row[pid] %}
+        {% set unit = row[pid + "_unit"] %}
+        <td>{% if val is not none %}{{ "%.4f"|format(val) }} {{ unit }}{% else %}N/A{% endif %}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- Charts (displayed as placeholder) -->
+<h2>Charts</h2>
+{% for chart in charts %}
+<div style="page-break-inside: avoid;">
+  <h3>{{ chart.title }}</h3>
+  <p><em>Interactive chart of type "{{ chart.chart_type }}" — view in the DataProof web app for full interactivity.</em></p>
+</div>
+{% endfor %}
+
+<!-- Interpretation -->
+{% if per_sample_interpretation or overall_narrative %}
+<h2>Interpretation</h2>
+
+{% if overall_narrative %}
+<div class="narrative">{{ overall_narrative }}</div>
+{% endif %}
+
+{% if per_sample_interpretation %}
+<h3>Per-Sample Classifications</h3>
+{% for ps in per_sample_interpretation %}
+<div class="per-sample">
+  <strong>{{ ps.sample_id }}:</strong>
+  <em>{{ ps.classification }}</em> — {{ ps.rationale }}
+</div>
+{% endfor %}
+{% endif %}
+{% endif %}
+
+<!-- References -->
+{% if citations %}
+<h2>References</h2>
+<ol>
+  {% for c in citations %}
+  <li class="{% if c.verified %}citation-verified{% else %}citation-unverified{% endif %}">
+    {{ c.authors }} ({{ c.year or "n.d." }}).
+    <em>{{ c.title }}</em>.
+    {{ c.venue or "" }}.
+    {% if c.doi_or_url %}{{ c.doi_or_url }}{% endif %}
+    {% if c.verified %}[VERIFIED]{% else %}[UNVERIFIED]{% endif %}
+  </li>
+  {% endfor %}
+</ol>
+{% endif %}
+
+<div class="footer-note">
+  Created by Mohamad Kamardin with DataProof Engine — AI-assisted interpretation, verify before publication.
+</div>
+
+</body>
+</html>

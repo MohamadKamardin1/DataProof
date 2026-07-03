@@ -1,0 +1,11 @@
+# XRF Paleosol Analysis - Lab ID: XRF-2024-007
+# Instrument: PANalytical Epsilon 4
+# Analyst: J. Smith
+# Calibration: Standard A
+# Notes: Samples collected from Upper Paleosol horizon
+"Sample ID","Rb (ppm)","Sr (ppm)","Ba (ppm)","Al (ppm)","Si (ppm)","Ca (ppm)"
+"PS-01","1,234.56","87.3","45.2","9,876.54","12,345.6","87.3"
+"PS-02","89.2","1,456.78","67.3","8,234.56","34.1","7,654.32"
+"PS-03","95.7","1,567.89","72.1","8,345.67","35.8","8,765.43"
+"PS-04","102.3","1,678.90","78.5","9,456.78","38.2","9,876.54"
+"PS-05","88.4","1,345.67","69.2","8,567.89","33.5","7,543.21"
