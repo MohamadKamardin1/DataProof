@@ -14,10 +14,14 @@
   ╚═════╝ ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
 ```
 
-**Author:** Mohamad Kamardin · focusinzanzibar@outlook.com
+[![Portfolio](https://img.shields.io/badge/Portfolio-mohamadkamardin.space-9B4F2E?style=for-the-badge&logo=google-chrome&logoColor=white)](https://mohamadkamardin.space)
+[![WhatsApp](https://img.shields.io/badge/WhatsApp-%2B255778769590-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/255778769590)
+[![Email](https://img.shields.io/badge/Email-focusinzanzibar%40outlook.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:focusinzanzibar@outlook.com)
+
+**Author:** Mohamad Kamardin
 **Status:** Phase 6/6 — Production-ready
 **Stack:** Python 3.12 · FastAPI · Lit 3 · PostgreSQL · Redis
-**License:** Proprietary — All Rights Reserved
+**License:** MIT — see [LICENSE](LICENSE)
 
 ---
 
@@ -202,8 +206,12 @@ All 6 phases are complete. See ROADMAP.md for post-program recommendations.
 
 ```
 DataProof
-Built by Mohamad Kamardin · focusinzanzibar@outlook.com
-https://github.com/MohamadKamardin1/DataProof
-
-© 2026 Mohamad Kamardin. All rights reserved.
+Built by Mohamad Kamardin
 ```
+
+📧 focusinzanzibar@outlook.com  
+🌐 [mohamadkamardin.space](https://mohamadkamardin.space)  
+💬 [WhatsApp: +255778769590](https://wa.me/255778769590)  
+🐙 [github.com/MohamadKamardin1/DataProof](https://github.com/MohamadKamardin1/DataProof)  
+
+MIT © 2026 Mohamad Kamardin
