@@ -16,7 +16,7 @@
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-mohamadkamardin.space-9B4F2E?style=for-the-badge&logo=google-chrome&logoColor=white)](https://mohamadkamardin.space)
 [![WhatsApp](https://img.shields.io/badge/WhatsApp-%2B255778769590-25D366?style=for-the-badge&logo=whatsapp&logoColor=white)](https://wa.me/255778769590)
-[![Email](https://img.shields.io/badge/Email-focusinzanzibar%40outlook.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:focusinzanzibar@outlook.com)
+[![Email](https://img.shields.io/badge/Email-sultankvanny%40gmail.com-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sultankvanny@gmail.com)
 
 **Author:** Mohamad Kamardin
 **Status:** Phase 6/6 — Production-ready
@@ -209,7 +209,7 @@ DataProof
 Built by Mohamad Kamardin
 ```
 
-📧 focusinzanzibar@outlook.com  
+📧 sultankvanny@gmail.com  
 🌐 [mohamadkamardin.space](https://mohamadkamardin.space)  
 💬 [WhatsApp: +255778769590](https://wa.me/255778769590)  
 🐙 [github.com/MohamadKamardin1/DataProof](https://github.com/MohamadKamardin1/DataProof)  
